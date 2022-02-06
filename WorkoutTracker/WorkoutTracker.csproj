@@ -51,8 +51,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="MainPageView.xaml.cs">
-	    <DependentUpon>MainPageView.xaml</DependentUpon>
+	  <Compile Update="MainPage.xaml.cs">
+	    <DependentUpon>MainPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

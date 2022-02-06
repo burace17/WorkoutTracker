@@ -4,7 +4,7 @@
        x:Class="WorkoutTracker.AppShell">
   <TabBar>
     <Tab Title="Main">
-      <ShellContent ContentTemplate="{DataTemplate local:MainPageView}" />
+      <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
     </Tab>
   </TabBar>
 </Shell>
