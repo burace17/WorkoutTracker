@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace WorkoutTracker
 {
-  internal class ViewModelBase : INotifyPropertyChanged
+  public class ViewModelBase : INotifyPropertyChanged
   {
     public event PropertyChangedEventHandler? PropertyChanged;
     protected void NotifyPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

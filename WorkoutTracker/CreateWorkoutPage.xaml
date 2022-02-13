@@ -3,11 +3,13 @@
              x:Class="WorkoutTracker.CreateWorkoutPage"
              Shell.PresentationMode="ModalAnimated"
              xmlns:local="clr-namespace:WorkoutTracker">
-  <ContentPage.BindingContext>
-    <local:CreateWorkoutViewModel/>
-  </ContentPage.BindingContext>
-  <Grid Margin="20,40,20,50" RowDefinitions="Auto,*,Auto">
-    <Label GridLayout.Row="0" Text="This is a detail page"/>
-    <Button GridLayout.Row="2" Text="Finish" Command="{Binding CloseCmd}"/>
-  </Grid>
+  <ScrollView>
+    <StackLayout Margin="20,40,20,50">
+      <Grid ColumnDefinitions="Auto,*,Auto">
+        <Button GridLayout.Column="0" Text="Cancel" Command="{Binding CloseCmd}"/>
+        <Button GridLayout.Column="2" Text="Save" Command="{Binding CloseCmd}"/>
+      </Grid>
+      <local:WorkoutView BindingContext="{Binding Workout}"/>
+    </StackLayout>
+  </ScrollView>
 </ContentPage>

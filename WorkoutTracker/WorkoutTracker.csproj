@@ -63,6 +63,9 @@
 	  <MauiXaml Update="CreateWorkoutPage.xaml">
 	    <Generator></Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="WorkoutView.xaml">
+	    <Generator></Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">

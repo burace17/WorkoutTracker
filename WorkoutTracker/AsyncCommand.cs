@@ -3,7 +3,7 @@
 namespace WorkoutTracker;
 
 // https://johnthiriet.com/mvvm-going-async-with-async-command
-internal class AsyncCommand : ICommand
+public class AsyncCommand : ICommand
 {
   public event EventHandler? CanExecuteChanged;
 

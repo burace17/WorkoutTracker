@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace WorkoutTracker
 {
-  internal class MainPageViewModel : ViewModelBase
+  public class MainPageViewModel : ViewModelBase
   {
     private ICommand? _startWorkoutCmd;
     public ICommand StartWorkoutCmd => _startWorkoutCmd ??= new Command(() => { });

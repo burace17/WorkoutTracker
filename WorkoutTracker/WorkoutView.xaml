@@ -1,0 +1,50 @@
+﻿<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WorkoutTracker.WorkoutView"
+             xmlns:local="clr-namespace:WorkoutTracker">
+  <ContentView.Resources>
+    <local:BoolToOppositeBoolConverter x:Key="boolToOppositeBoolConverter"/>
+    
+    <DataTemplate x:Key="SetTemplate">
+      <ContentView>
+        <ContentView.GestureRecognizers>
+          <SwipeGestureRecognizer Direction="Left" Command="{Binding RemoveFromExerciseCmd}"/>
+        </ContentView.GestureRecognizers>
+        <Grid ColumnDefinitions="Auto,*,Auto,*,Auto">
+          <Entry GridLayout.Column="0" Text="{Binding Weight}"/>
+
+          <Entry GridLayout.Column="2" Text="{Binding Repetitions}" IsVisible="{Binding IsDesignMode}"/>
+          <Entry GridLayout.Column="2" 
+                 Text="{Binding CompletedRepetitions}" 
+                 Placeholder="{Binding Repetitions}"
+                 IsVisible="{Binding IsDesignMode, Converter={StaticResource boolToOppositeBoolConverter}}"/>
+
+          <CheckBox GridLayout.Column="4" IsChecked="{Binding Completed}" 
+                    IsVisible="{Binding IsDesignMode, Converter={StaticResource boolToOppositeBoolConverter}}"/>
+        </Grid> 
+      </ContentView>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ExerciseTemplate">
+      <StackLayout>
+        <Grid ColumnDefinitions="Auto,*,Auto">
+          <Label GridLayout.Column="0" Text="{Binding Name}" VerticalTextAlignment="Center"/>
+          <Button GridLayout.Column="2" Text="Remove" Command="{Binding RemoveFromWorkoutCmd}"/>
+        </Grid>
+        <Grid Margin="0,20" ColumnDefinitions="Auto,*,Auto,*,Auto">
+          <Label GridLayout.Column="0" Text="Weight"/>
+          <Label GridLayout.Column="2" Text="Reps"/>
+          <Label GridLayout.Column="4" Text="Completed?"
+                 IsVisible="{Binding IsDesignMode, Converter={StaticResource boolToOppositeBoolConverter}}"/>
+        </Grid>
+        <CollectionView ItemsSource="{Binding Sets}" ItemTemplate="{StaticResource SetTemplate}"/>
+        <Button Margin="0,20" Text="Add set" Command="{Binding AddSetCmd}"/>
+      </StackLayout>
+    </DataTemplate>
+  </ContentView.Resources>
+  <StackLayout>
+    <Label Margin="0,20" Text="{Binding DisplayName}" />
+    <CollectionView ItemsSource="{Binding Exercises}" ItemTemplate="{StaticResource ExerciseTemplate}"/>
+    <Button Margin="0,20" Text="Add exercise" Command="{Binding AddExerciseCmd}" />
+  </StackLayout>
+</ContentView>
