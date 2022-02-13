@@ -1,5 +1,4 @@
 ﻿using System.Windows.Input;
-using WorkoutTracker.Models;
 namespace WorkoutTracker;
 
 public class SetViewModel : ViewModelBase

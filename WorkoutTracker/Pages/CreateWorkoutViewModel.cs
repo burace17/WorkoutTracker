@@ -7,7 +7,7 @@ public class CreateWorkoutViewModel : ViewModelBase
   public CreateWorkoutViewModel()
   {
     var date = DateTime.Now;
-    var workout = new Models.Workout(null, $"Untitled ({date:g}", date, new List<Models.Exercise>());
+    var workout = new Workout(null, $"Untitled ({date:g}", date, new List<Exercise>());
     Workout = new(workout, true);
   }
 

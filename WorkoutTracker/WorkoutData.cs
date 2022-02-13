@@ -1,6 +1,5 @@
 ﻿using SQLite;
 using System.Text.Json;
-using WorkoutTracker.Models;
 
 namespace WorkoutTracker;
 

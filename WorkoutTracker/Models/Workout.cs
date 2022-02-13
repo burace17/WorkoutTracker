@@ -1,5 +1,5 @@
 ﻿using System.Text.Json.Serialization;
-namespace WorkoutTracker.Models;
+namespace WorkoutTracker;
 public readonly record struct Workout
 {
   public Workout(int? id, string name, DateTime date, IReadOnlyCollection<Exercise> exercises)

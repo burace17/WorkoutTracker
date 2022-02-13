@@ -56,7 +56,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="MainPage.xaml.cs">
+	  <Compile Update="Pages\MainPage.xaml.cs">
 	    <DependentUpon>MainPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
@@ -65,10 +65,10 @@
 	  <MauiXaml Update="AppShell.xaml">
 	    <Generator></Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="CreateWorkoutPage.xaml">
+	  <MauiXaml Update="Pages\CreateWorkoutPage.xaml">
 	    <Generator></Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="WorkoutView.xaml">
+	  <MauiXaml Update="Controls\WorkoutView.xaml">
 	    <Generator></Generator>
 	  </MauiXaml>
 	</ItemGroup>
