@@ -53,4 +53,6 @@ public class SetViewModel : ViewModelBase
 
   private Command? _removeFromExerciseCmd;
   public ICommand RemoveFromExerciseCmd => _removeFromExerciseCmd ??= new Command(() => Parent.RemoveSet(this));
+
+  public Set GetModel() => new(Weight, Repetitions, CompletedRepetitions, Completed);
 }

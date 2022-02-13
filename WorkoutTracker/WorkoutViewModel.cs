@@ -8,35 +8,28 @@ public class WorkoutViewModel : ViewModelBase
 {
   public WorkoutViewModel(Workout workout, bool isDesignMode)
   {
+    ID = workout.ID;
     _name = workout.Name;
     _date = workout.Date;
     Exercises = workout.Exercises.Select(exercise => new ExerciseViewModel(this, exercise)).ToObservableCollection();
     IsDesignMode = isDesignMode;
   }
 
+  private int? ID { get; init; }
+
   private string _name;
   public string Name
   {
     get => _name;
-    set
-    {
-      if (SetProperty(ref _name, value))
-        NotifyPropertyChanged(nameof(DisplayName));
-    }
+    set => SetProperty(ref _name, value);
   }
 
   private DateTime _date;
   public DateTime Date
   {
     get => _date;
-    set
-    {
-      if (SetProperty(ref _date, value))
-        NotifyPropertyChanged(nameof(DisplayName));
-    }
+    set => SetProperty(ref _date, value);
   }
-
-  public string DisplayName => $"{Name} ({Date:g})";
 
   public ObservableCollection<ExerciseViewModel> Exercises { get; init; }
 
@@ -53,4 +46,6 @@ public class WorkoutViewModel : ViewModelBase
   public ICommand AddExerciseCmd => _addExerciseCmd ??= new AsyncCommand(AddExercise);
 
   public void RemoveExercise(ExerciseViewModel exercise) => Exercises.Remove(exercise);
+
+  public Workout GetModel() => new(ID, Name, Date, Exercises.Select(evm => evm.GetModel()).ToList());
 }

@@ -51,16 +51,9 @@ public class AsyncCommand : ICommand
     return CanExecute();
   }
 
-  async void ICommand.Execute(object? parameter)
+  void ICommand.Execute(object? parameter)
   {
-    try
-    {
-      await ExecuteAsync();
-    }
-    catch (Exception ex)
-    {
-      throw new Exception("Exception thrown while waiting on task.", ex);
-    }
+    Utilities.NonAwaitCall(ExecuteAsync());
   }
   #endregion
 }

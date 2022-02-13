@@ -1,6 +1,21 @@
-﻿using System.Collections.Immutable;
+﻿using System.Text.Json.Serialization;
 namespace WorkoutTracker.Models;
-public readonly record struct Workout(string Name, DateTime Date, ImmutableList<Exercise> Exercises)
+public readonly record struct Workout
 {
-  public static Workout Create() => new("Untitled", DateTime.Now, ImmutableList<Exercise>.Empty);
+  public Workout(int? id, string name, DateTime date, IReadOnlyCollection<Exercise> exercises)
+  {
+    ID = id;
+    Name = name;
+    Date = date;
+    Exercises = exercises;
+  }
+
+  [JsonIgnore]
+  public int? ID { get; init; }
+
+  public string Name { get; init; }
+
+  public DateTime Date { get; init; }
+
+  public IReadOnlyCollection<Exercise> Exercises { get; init; }
 }

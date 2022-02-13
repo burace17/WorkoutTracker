@@ -43,7 +43,7 @@
     </DataTemplate>
   </ContentView.Resources>
   <StackLayout>
-    <Label Margin="0,20" Text="{Binding DisplayName}" />
+    <Entry Margin="0,20" Text="{Binding Name}" />
     <CollectionView ItemsSource="{Binding Exercises}" ItemTemplate="{StaticResource ExerciseTemplate}"/>
     <Button Margin="0,20" Text="Add exercise" Command="{Binding AddExerciseCmd}" />
   </StackLayout>

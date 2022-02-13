@@ -17,17 +17,20 @@
              FontSize="32"
              HorizontalOptions="Center" />
 
-      <Button Text="Start a workout"
-              FontAttributes="Bold"
-              Grid.Row="1"
-              Command="{Binding StartWorkoutCmd}"
-              HorizontalOptions="Center" />
-
       <Button Text="Create a workout template"
               FontAttributes="Bold"
-              Grid.Row="2"
+              Grid.Row="1"
               Command="{Binding CreateTemplateCmd}"
               HorizontalOptions="Center" />
+
+      <CollectionView Grid.Row="2" ItemsSource="{Binding Workouts}" SelectionMode="Single" SelectedItem="{Binding SelectedWorkout}"
+                      SelectionChangedCommand="{Binding StartWorkoutCmd}">
+        <CollectionView.ItemTemplate>
+          <DataTemplate>
+            <Label Text="{Binding Name}"/>
+          </DataTemplate>
+        </CollectionView.ItemTemplate>
+      </CollectionView>
 
     </Grid>
   </ScrollView>

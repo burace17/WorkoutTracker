@@ -46,4 +46,6 @@ public class ExerciseViewModel : ViewModelBase
 
   private Command? _removeFromWorkoutCmd;
   public ICommand RemoveFromWorkoutCmd => _removeFromWorkoutCmd ??= new Command(() => Parent.RemoveExercise(this));
+
+  public Exercise GetModel() => new(Name, Sets.Select(svm => svm.GetModel()).ToList());
 }
