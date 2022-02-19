@@ -4,6 +4,5 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-namespace WorkoutTracker;
-
-public readonly record struct Set(double Weight, int Repetitions, int CompletedReptitions, bool Completed);
+global using System.Collections.ObjectModel;
+global using System.Windows.Input;
