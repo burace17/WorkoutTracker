@@ -6,8 +6,8 @@
   <ScrollView>
     <StackLayout Margin="20,40,20,50">
       <Grid ColumnDefinitions="Auto,*,Auto">
-        <Button GridLayout.Column="0" Text="Cancel" Command="{Binding CloseCmd}"/>
-        <Button GridLayout.Column="2" Text="Save" Command="{Binding SaveCmd}"/>
+        <Button Grid.Column="0" Text="Cancel" Command="{Binding CloseCmd}"/>
+        <Button Grid.Column="2" Text="Save" Command="{Binding SaveCmd}"/>
       </Grid>
       <local:WorkoutView BindingContext="{Binding Workout}"/>
     </StackLayout>

@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace WorkoutTracker;
 
-public sealed class WorkoutData
+public sealed class WorkoutDataService
 {
   [Table("WorkoutTemplates")]
   private class WorkoutTemplateRow
@@ -11,7 +11,7 @@ public sealed class WorkoutData
     [PrimaryKey, AutoIncrement, Column("_id")]
     public int ID { get; set; }
     [NotNull]
-    public string WorkoutTemplate { get; set; }
+    public string WorkoutTemplate { get; set; } = "";
   }
 
   [Table("Workouts")]
@@ -20,7 +20,7 @@ public sealed class WorkoutData
     [PrimaryKey, AutoIncrement, Column("_id")]
     public int ID { get; set; }
     [NotNull]
-    public string Workout { get; set; }
+    public string Workout { get; set; } = "";
   }
 
   private const string DatabaseFolder = "Workout Tracker";
@@ -38,23 +38,22 @@ public sealed class WorkoutData
 
   private static string DatabasePath => Path.Combine(AppStoragePath, DatabaseFilename);
 
-  private bool _createdTables;
+  private bool _hasCreatedTables;
   private SQLiteAsyncConnection Database { get; init; }
-  public static WorkoutData Instance { get; } = new();
 
-  private WorkoutData()
+  public WorkoutDataService()
   {
     Database = new SQLiteAsyncConnection(DatabasePath, Flags);
   }
 
   private async Task CreateTablesIfNeeded()
   {
-    if (!_createdTables)
+    if (!_hasCreatedTables)
     {
       Directory.CreateDirectory(AppStoragePath);
       await Database.CreateTableAsync<WorkoutTemplateRow>();
       await Database.CreateTableAsync<WorkoutRow>();
-      _createdTables = true;
+      _hasCreatedTables = true;
     }
   }
 
@@ -64,7 +63,8 @@ public sealed class WorkoutData
     var workoutJson = JsonSerializer.Serialize(workout);
     var workoutRow = new WorkoutTemplateRow() { WorkoutTemplate = workoutJson };
     var id = await Database.InsertAsync(workoutRow);
-    return workout with { ID = id };
+    var newWorkout = workout with { ID = id };
+    return newWorkout;
   }
 
   public async Task<Workout> InsertWorkout(Workout workout)

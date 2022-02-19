@@ -7,10 +7,14 @@ public static class MauiProgram
     var builder = MauiApp.CreateBuilder();
     builder
       .UseMauiApp<App>()
+      .ConfigureServices()
+      .ConfigureViewModels()
       .ConfigureFonts(fonts =>
       {
         fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
       });
+
+
 
     Routing.RegisterRoute("createWorkout", typeof(CreateWorkoutPage));
 

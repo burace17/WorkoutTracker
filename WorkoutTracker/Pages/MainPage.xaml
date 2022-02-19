@@ -3,10 +3,6 @@
              x:Class="WorkoutTracker.MainPage"
              xmlns:local="clr-namespace:WorkoutTracker"
              BackgroundColor="{DynamicResource SecondaryColor}">
-  <ContentPage.BindingContext>
-    <local:MainPageViewModel/>
-  </ContentPage.BindingContext>
-
   <ScrollView>
     <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto"
               Padding="{OnPlatform iOS='30,60,30,30', Default='30'}">
@@ -23,7 +19,7 @@
               Command="{Binding CreateTemplateCmd}"
               HorizontalOptions="Center" />
 
-      <CollectionView Grid.Row="2" ItemsSource="{Binding Workouts}" SelectionMode="Single" SelectedItem="{Binding SelectedWorkout}"
+      <CollectionView Grid.Row="2" ItemsSource="{Binding WorkoutTemplates}" SelectionMode="Single" SelectedItem="{Binding SelectedWorkout}"
                       SelectionChangedCommand="{Binding StartWorkoutCmd}">
         <CollectionView.ItemTemplate>
           <DataTemplate>

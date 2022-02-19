@@ -11,15 +11,15 @@
           <SwipeGestureRecognizer Direction="Left" Command="{Binding RemoveFromExerciseCmd}"/>
         </ContentView.GestureRecognizers>
         <Grid ColumnDefinitions="Auto,*,Auto,*,Auto">
-          <Entry GridLayout.Column="0" Text="{Binding Weight}"/>
+          <Entry Grid.Column="0" Text="{Binding Weight}"/>
 
-          <Entry GridLayout.Column="2" Text="{Binding Repetitions}" IsVisible="{Binding IsDesignMode}"/>
-          <Entry GridLayout.Column="2" 
+          <Entry Grid.Column="2" Text="{Binding Repetitions}" IsVisible="{Binding IsDesignMode}"/>
+          <Entry Grid.Column="2" 
                  Text="{Binding CompletedRepetitions}" 
                  Placeholder="{Binding Repetitions}"
                  IsVisible="{Binding IsDesignMode, Converter={StaticResource boolToOppositeBoolConverter}}"/>
 
-          <CheckBox GridLayout.Column="4" IsChecked="{Binding Completed}" 
+          <CheckBox Grid.Column="4" IsChecked="{Binding Completed}" 
                     IsVisible="{Binding IsDesignMode, Converter={StaticResource boolToOppositeBoolConverter}}"/>
         </Grid> 
       </ContentView>
@@ -28,13 +28,13 @@
     <DataTemplate x:Key="ExerciseTemplate">
       <StackLayout>
         <Grid ColumnDefinitions="Auto,*,Auto">
-          <Label GridLayout.Column="0" Text="{Binding Name}" VerticalTextAlignment="Center"/>
-          <Button GridLayout.Column="2" Text="Remove" Command="{Binding RemoveFromWorkoutCmd}"/>
+          <Label Grid.Column="0" Text="{Binding Name}" VerticalTextAlignment="Center"/>
+          <Button Grid.Column="2" Text="Remove" Command="{Binding RemoveFromWorkoutCmd}"/>
         </Grid>
         <Grid Margin="0,20" ColumnDefinitions="Auto,*,Auto,*,Auto">
-          <Label GridLayout.Column="0" Text="Weight"/>
-          <Label GridLayout.Column="2" Text="Reps"/>
-          <Label GridLayout.Column="4" Text="Completed?"
+          <Label Grid.Column="0" Text="Weight"/>
+          <Label Grid.Column="2" Text="Reps"/>
+          <Label Grid.Column="4" Text="Completed?"
                  IsVisible="{Binding IsDesignMode, Converter={StaticResource boolToOppositeBoolConverter}}"/>
         </Grid>
         <CollectionView ItemsSource="{Binding Sets}" ItemTemplate="{StaticResource SetTemplate}"/>

@@ -13,4 +13,16 @@ public static class Extensions
     foreach (var item in items)
       coll.Add(item);
   }
+
+  public static MauiAppBuilder ConfigureServices(this MauiAppBuilder builder)
+  {
+    builder.Services.AddSingleton<WorkoutDataService>();
+    return builder;
+  }
+  public static MauiAppBuilder ConfigureViewModels(this MauiAppBuilder builder)
+  {
+    builder.Services.AddSingleton<MainPageViewModel>();
+    builder.Services.AddTransient<CreateWorkoutViewModel>();
+    return builder;
+  }
 }

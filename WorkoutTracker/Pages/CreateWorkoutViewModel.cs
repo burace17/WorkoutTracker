@@ -4,10 +4,12 @@ namespace WorkoutTracker;
 
 public class CreateWorkoutViewModel : ViewModelBase
 {
-  public CreateWorkoutViewModel()
+  private WorkoutDataService WorkoutDataService { get; }
+  public CreateWorkoutViewModel(WorkoutDataService workoutDataService)
   {
+    WorkoutDataService = workoutDataService;
     var date = DateTime.Now;
-    var workout = new Workout(null, $"Untitled ({date:g}", date, new List<Exercise>());
+    var workout = new Workout(null, "Untitled Routine", date, new List<Exercise>());
     Workout = new(workout, true);
   }
 
@@ -18,8 +20,8 @@ public class CreateWorkoutViewModel : ViewModelBase
 
   private async Task SaveWorkout()
   {
+    await WorkoutDataService.InsertWorkoutTemplate(Workout.GetModel()); 
     await Shell.Current.GoToAsync("..");
-    await WorkoutData.Instance.InsertWorkoutTemplate(Workout.GetModel()); 
   }
 
   private ICommand? _saveCmd;

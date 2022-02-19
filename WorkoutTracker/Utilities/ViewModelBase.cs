@@ -18,5 +18,6 @@ namespace WorkoutTracker
 
       return equal;
     }
+    public virtual Task InitializeAsync() => Task.CompletedTask;
   }
 }
